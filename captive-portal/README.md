@@ -1,6 +1,6 @@
 # captive-portal image
 
-Offspot image to trigger a *captive-portal-like* web UI on WiFi connection to inform users about our main content URL
+Image to trigger a *captive-portal-like* web UI on WiFi connection to inform users about main content URL.
 
 ## Dependencies
 
@@ -16,10 +16,10 @@ Configuration is done mostly via environment variables
 
 | Variable            | Default                 | Usage                                                             |
 | ------------------- | ----------------------- | ----------------------------------------------------------------- |
-| `HOTSPOT_NAME`      | `Kiwix Hotspot`         | Name of the hotspot/SSSID, displayed on portal and as title             |
-| `HOTSPOT_FQDN`      | `default.hotspot`       | URL (hostname actualy) to point users to.                         |
-| `HOSTPOT_IP`        | `192.168.144.1`         | IP to redirect unregistered HTTP traffic to                       |
-| `CAPTURED_NETWORKS` | `192.168.144.128/25     | `|` separated networks to limit *capture* to. Otherwise any       |
+| `HOTSPOT_NAME`      | `MoodleBox`             | Name of the hotspot/SSSID, displayed on portal and as title             |
+| `HOTSPOT_FQDN`      | `moodlebox.home`        | URL (hostname actualy) to point users to.                         |
+| `HOSTPOT_IP`        | `10.0.0.1`              | IP to redirect unregistered HTTP traffic to                       |
+| `CAPTURED_NETWORKS` | `10.0.0.1/24`           | `|` separated networks to limit *capture* to. Otherwise any       |
 | `TIMEOUT`           | `60`                    | Minutes after which to consider an *inactive* client unregistered |
 | `FOOTER_NOTE`       |                         | Small text displayed on footer of portal                          |
 | `DEBUG`             |                         | Set any value to trigger debug logging                            |
@@ -54,7 +54,7 @@ Offline and Online work differently. A connection-status file is used to toggle 
 
 ## when online
 
-`online` server is a server expected to be online and thus routing actual, non-hotspot, traffic over the internet. 
+`online` server is a server expected to be online and thus routing actual, non-hotspot, traffic over the internet.
 
 - regular DNS upstream server is OK as HTTP requests will be intercepted
 
@@ -73,12 +73,12 @@ services:
     cap_add:
       - NET_ADMIN
     container_name: home-portal
-    image: ghcr.io/offspot/captive-portal:latest
+    image: localhost/captive-portal:latest
     environment:
-      HOTSPOT_NAME: My hotspot
-      HOTSPOT_IP: "192.168.144.1"
-      HOTSPOT_FQDN: demo.offspot
-      CAPTURED_NETWORKS: "192.168.144.128/25"
+      HOTSPOT_NAME: MoodleBox
+      HOTSPOT_IP: "10.0.0.1"
+      HOTSPOT_FQDN: moodlebox.home
+      CAPTURED_NETWORKS: "10.0.0.1/24"
       CAPTURED_ADDRESS: "198.51.100.1"
     volumes:
     - "/var/run/internet:/var/run/internet:ro"

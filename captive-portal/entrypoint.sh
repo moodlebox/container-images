@@ -20,11 +20,11 @@ string_mask            = utf8only
 
 [req_distinguished_name]
 countryName            = CH
-stateOrProvinceName    = Vaud
-organizationName       = Kiwix
-organizationalUnitName = Kiwix Hotspot
-commonName             = kiwix.hotspot
-emailAddress           = hotspot@kiwix.org
+stateOrProvinceName    = Fribourg
+organizationName       = MoodleBox
+organizationalUnitName = MoodleBox
+commonName             = moodlebox.net
+emailAddress           = nicolas@martignoni.net
 
 [req_ext]
 subjectAltName         = @alt_names
